@@ -1,38 +1,50 @@
-<div class="container">
-  <h1>Шуарбет Калкулатор</h1>
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Шуарбет Калкулатор</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Шуарбет Калкулатор</h1>
 
-  <label>Избери събитие:
-    <select id="eventSelect">
-      <option>Мач 1: Реал - Барселона</option>
-      <option>Мач 2: Ливърпул - Манчестър Юн.</option>
-      <option>Мач 3: Байерн - Борусия Д.</option>
-    </select>
-  </label>
+    <label>Избери събитие:
+      <select id="eventSelect">
+        <option>Мач 1: Реал - Барселона</option>
+        <option>Мач 2: Ливърпул - Манчестър Юн.</option>
+        <option>Мач 3: Байерн - Борусия Д.</option>
+      </select>
+    </label>
 
-  <label>Коефициент за 1 (домакин):
-    <input type="number" id="odd1" step="0.01" oninput="autoCheck()" />
-  </label>
+    <label>Коефициент за 1 (домакин):
+      <input type="number" id="odd1" step="0.01" oninput="autoCheck()" />
+    </label>
 
-  <label>Коефициент за 2 (гост):
-    <input type="number" id="odd2" step="0.01" oninput="autoCheck()" />
-  </label>
+    <label>Коефициент за 2 (гост):
+      <input type="number" id="odd2" step="0.01" oninput="autoCheck()" />
+    </label>
 
-  <label>Обща сума за залагане (лв):
-    <input type="number" id="stake" step="0.01" />
-  </label>
+    <label>Обща сума за залагане (лв):
+      <input type="number" id="stake" step="0.01" />
+    </label>
 
-  <div id="surebetCheck"></div>
+    <div id="surebetCheck"></div>
 
-  <button onclick="calculate()">Изчисли</button>
-  <button onclick="clearFields()">Изчисти</button>
-  <button onclick="exportToCSV()">Експортирай история като CSV</button>
+    <button onclick="calculate()">Изчисли</button>
+    <button onclick="clearFields()">Изчисти</button>
+    <button onclick="exportToCSV()">Експортирай история като CSV</button>
 
-  <div id="result" class="result"></div>
+    <div id="result" class="result"></div>
 
-  <div class="history">
-    <h3>История на печалбите</h3>
-    <ul id="historyList"></ul>
+    <div class="history">
+      <h3>История на печалбите</h3>
+      <ul id="historyList"></ul>
+    </div>
+
+    <label><input type="checkbox" id="darkModeToggle" /> Тъмна тема</label>
   </div>
-
-  <label><input type="checkbox" id="darkModeToggle" /> Тъмна тема</label>
-</div>
+</body>
+</html>
