@@ -1,0 +1,16 @@
+
+{
+  "name": "Surebet Calculator",
+  "short_name": "SurebetCalc",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "Calculate surebets with ease.",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
