@@ -1,51 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Surebet Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f2f2f2;
-    }
-    .container {
-      max-width: 400px;
-      margin: auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    input {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background-color: #4CAF50;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .result {
-      margin-top: 20px;
-      font-weight: bold;
-      color: #333;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Шуарбет Калкулатор</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h2>Surebet Calculator</h2>
-    <input type="number" id="odd1" placeholder="Коефициент 1 (напр. 2.10)" step="any">
-    <input type="number" id="odd2" placeholder="Коефициент 2 (напр. 2.20)" step="any">
-    <input type="number" id="stake" placeholder="Заложена сума (напр. 100)" step
+    <h1>Шуарбет Калкулатор</h1>
 
+    <label><input type="checkbox" id="darkModeToggle" /> Тъмна тема</label>
+
+    <label>Избери събитие:
+      <select id="eventSelect">
+        <option>Мач 1: Реал - Барселона</option>
+      </select>
+    </label>
+
+    <label>Добави ново събитие:
+      <input type="text" id="newEvent" placeholder="напр. Ювентус - Милан" />
+      <button onclick="addEvent()">Добави събитие</button>
+      <button onclick="removeSelectedEvent()">Премахни избраното събитие</button>
+    </label>
+
+    <label>Коефициент за 1 (домакин):
+      <input type="number" id="odd1" step="0.01" />
+    </label>
+    <label>Коефициент за 2 (гост):
+      <input type="number" id="odd2" step="0.01" />
+    </label>
+    <label>Обща сума за залагане (лв):
+      <input type="number" id="stake" step="0.01" />
+    </label>
+
+    <button onclick="calculate()">Изчисли</button>
+    <button onclick="clearFields()">Изчисти</button>
+    <button onclick="exportToCSV()">Експортирай история като CSV</button>
+
+    <div id="result" class="result"></div>
+    <div class="history">
+      <h3>История на печалбите</h3>
+      <ul id="historyList"></ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
