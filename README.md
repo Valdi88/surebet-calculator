@@ -1,1 +1,1 @@
-# surebet-calculator
+# Surebet-Calculator
