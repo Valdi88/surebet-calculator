@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Surebet Калкулатор</title>
+  <!-- Връзка към външния CSS файл -->
   <link rel="stylesheet" href="style.css">
+  <!-- Зареждане на JavaScript логиката (defer гарантира, че HTML-ът ще се зареди първо) -->
   <script src="app.js" defer></script>
 </head>
 <body>
   <div class="container">
     <h1>Surebet Калкулатор</h1>
     
-    <!-- Избор на режим -->
+    <!-- Избор на режим: 2-изходен (1 и 2) или 3-изходен (1, X, 2) -->
     <div class="mode-selection">
       <label>
         <input type="radio" name="mode" value="2" checked>
@@ -23,22 +25,48 @@
       </label>
     </div>
     
-    <!-- Полета за въвеждане -->
+    <!-- Въвеждане на събитие (оставяме го празно, за да въведе потребителят) -->
+    <div class="input-fields">
+      <label for="event">Събитие:</label>
+      <input type="text" id="event" placeholder="напр. Реал - Барселона">
+    </div>
+    
+    <!-- Падащо меню за избор на букмейкър -->
+    <div class="input-fields">
+      <label for="bookmaker">Избери букмейкър:</label>
+      <select id="bookmaker">
+        <option value="">-- Избери --</option>
+        <!-- Български букмейкъри -->
+        <option value="Winbet">Winbet</option>
+        <option value="PalmsBet">Palms Bet</option>
+        <option value="Efbet">Efbet</option>
+        <option value="Sesame">Sesame</option>
+        <option value="Inbet">Inbet</option>
+        <!-- Европейски букмейкъри -->
+        <option value="Bet365">Bet365</option>
+        <option value="Pinnacle">Pinnacle</option>
+        <option value="Bwin">Bwin</option>
+        <option value="Unibet">Unibet</option>
+      </select>
+      <button id="loadBtn">Зареди коефициенти</button>
+    </div>
+    
+    <!-- Полета за въвеждане на заложена сума и коефициенти -->
     <div class="input-fields">
       <label for="stake">Обща сума за залагане (лв):</label>
       <input type="number" id="stake" placeholder="напр. 100" step="0.01">
       
       <label for="odd1">Коефициент за 1 (домакин):</label>
-      <input type="number" id="odd1" placeholder="напр. 2.1" step="0.01">
+      <input type="number" id="odd1" placeholder="напр. 2.10" step="0.01">
       
       <!-- Това поле се показва само в 3-изходен режим -->
       <div id="threeOdds" style="display: none;">
         <label for="oddX">Коефициент за X (равен):</label>
-        <input type="number" id="oddX" placeholder="напр. 3.3" step="0.01">
+        <input type="number" id="oddX" placeholder="напр. 3.30" step="0.01">
       </div>
       
       <label for="odd2">Коефициент за 2 (гост):</label>
-      <input type="number" id="odd2" placeholder="напр. 2.1" step="0.01">
+      <input type="number" id="odd2" placeholder="напр. 2.10" step="0.01">
     </div>
     
     <!-- Бутони за изчисление и изчистване -->
@@ -47,7 +75,7 @@
       <button id="clearBtn">Изчисти</button>
     </div>
     
-    <!-- Резултат от калкулацията -->
+    <!-- Зона за показване на резултатите -->
     <div id="result" class="result"></div>
   </div>
 </body>
