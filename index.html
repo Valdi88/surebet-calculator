@@ -1,54 +1,47 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surebet Калкулатор</title>
-  <!-- Връзка към CSS файла -->
-  <link rel="stylesheet" href="style.css">
-  <!-- Зареждане на JavaScript логиката -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Система за залози „Шуарбет“</title>
+  <link rel="stylesheet" href="style.css" />
   <script src="app.js" defer></script>
 </head>
 <body>
   <div class="container">
-    <h1>Surebet Калкулатор</h1>
-    
-    <!-- Бутон за превключване между 2-изходен и 3-изходен режим -->
+    <h1>Система за залози „Шуарбет“</h1>
+
     <div class="mode-toggle">
-      <button id="toggleModeBtn">Показване на 3-изходен режим</button>
+      <button onclick="toggleMode('two')">2 възможности</button>
+      <button onclick="toggleMode('three')">3 възможности</button>
     </div>
 
-    <!-- Поле за заложена сума -->
-    <div class="input-fields">
-      <label for="stake">Обща сума за залагане (лв):</label>
-      <input type="number" id="stake" placeholder="напр. 100" step="0.01">
+    <label>Коефициент за 1 (домакин):
+      <input type="number" id="odd1" step="0.01" oninput="autoCheck()" />
+    </label>
+
+    <div id="oddXField" style="display:none;">
+      <label>Коефициент за X (равенство):
+        <input type="number" id="oddX" step="0.01" oninput="autoCheck()" />
+      </label>
     </div>
 
-    <!-- Полета за коефициенти -->
-    <div class="input-fields">
-      <label for="odd1">Коефициент за 1 (домакин):</label>
-      <input type="number" id="odd1" placeholder="напр. 2.10" step="0.01">
-    </div>
+    <label>Коефициент за 2 (гост):
+      <input type="number" id="odd2" step="0.01" oninput="autoCheck()" />
+    </label>
 
-    <!-- Поле за коефициент X – се показва само в 3-изходен режим -->
-    <div class="input-fields" id="oddXContainer" style="display: none;">
-      <label for="oddX">Коефициент за X (равен):</label>
-      <input type="number" id="oddX" placeholder="напр. 3.30" step="0.01">
-    </div>
+    <label>Обща сума за залагане (лв):
+      <input type="number" id="stake" step="0.01" />
+    </label>
 
-    <div class="input-fields">
-      <label for="odd2">Коефициент за 2 (гост):</label>
-      <input type="number" id="odd2" placeholder="напр. 2.10" step="0.01">
-    </div>
+    <div id="surebetCheck"></div>
 
-    <!-- Бутони за изчисляване и изчистване -->
-    <div class="buttons">
-      <button id="calcBtn">Изчисли</button>
-      <button id="clearBtn">Изчисти</button>
-    </div>
+    <button onclick="calculate()">Изчисли</button>
+    <button onclick="clearFields()">Изчисти</button>
 
-    <!-- Зона за показване на резултатите -->
     <div id="result" class="result"></div>
+
+    <label><input type="checkbox" id="darkModeToggle" /> Тъмна тема</label>
   </div>
 </body>
 </html>
