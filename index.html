@@ -1,62 +1,54 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Шуарбет Калкулатор</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surebet Калкулатор</title>
+  <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
 <body>
   <div class="container">
-    <h1>Шуарбет Калкулатор</h1>
-
-    <label>Събитие:
-      <select id="eventSelect">
-        <option>Реал - Барселона</option>
-        <option>Ливърпул - Манчестър Юн.</option>
-        <option>Байерн - Борусия Д.</option>
-      </select>
-    </label>
-
-    <label>Избери букмейкър:
-      <select id="bookmakerSelect">
-        <option>Bet365</option>
-        <option>Pinnacle</option>
-        <option>Bwin</option>
-        <option>Unibet</option>
-        <option>Efbet</option>
-        <option>Palms Bet</option>
-        <option>Winbet</option>
-        <option>Sesame</option>
-        <option>Inbet</option>
-      </select>
-    </label>
-    <button onclick="loadOddsByBookmaker()">Зареди коефициенти</button>
-
-    <label>Коефициент за 1 (домакин):
-      <input type="number" id="odd1" step="0.01" oninput="autoCheck()" />
-    </label>
-    <label>Коефициент за X (равен):
-      <input type="number" id="oddX" step="0.01" oninput="autoCheck()" />
-    </label>
-    <label>Коефициент за 2 (гост):
-      <input type="number" id="odd2" step="0.01" oninput="autoCheck()" />
-    </label>
-
-    <label>Обща сума за залагане (лв):
-      <input type="number" id="stake" step="0.01" />
-    </label>
-
-    <div id="surebetCheck"></div>
-
-    <button onclick="calculate()">Изчисли</button>
-    <button onclick="clearFields()">Изчисти</button>
-    <button onclick="exportToCSV()">Експортирай история като CSV</button>
-
+    <h1>Surebet Калкулатор</h1>
+    
+    <!-- Избор на режим -->
+    <div class="mode-selection">
+      <label>
+        <input type="radio" name="mode" value="2" checked>
+        2-изходен (1 и 2)
+      </label>
+      <label>
+        <input type="radio" name="mode" value="3">
+        3-изходен (1, X, 2)
+      </label>
+    </div>
+    
+    <!-- Полета за въвеждане -->
+    <div class="input-fields">
+      <label for="stake">Обща сума за залагане (лв):</label>
+      <input type="number" id="stake" placeholder="напр. 100" step="0.01">
+      
+      <label for="odd1">Коефициент за 1 (домакин):</label>
+      <input type="number" id="odd1" placeholder="напр. 2.1" step="0.01">
+      
+      <!-- Това поле се показва само в 3-изходен режим -->
+      <div id="threeOdds" style="display: none;">
+        <label for="oddX">Коефициент за X (равен):</label>
+        <input type="number" id="oddX" placeholder="напр. 3.3" step="0.01">
+      </div>
+      
+      <label for="odd2">Коефициент за 2 (гост):</label>
+      <input type="number" id="odd2" placeholder="напр. 2.1" step="0.01">
+    </div>
+    
+    <!-- Бутони за изчисление и изчистване -->
+    <div class="buttons">
+      <button id="calcBtn">Изчисли</button>
+      <button id="clearBtn">Изчисти</button>
+    </div>
+    
+    <!-- Резултат от калкулацията -->
     <div id="result" class="result"></div>
-
-    <label><input type="checkbox" id="darkModeToggle" /> Тъмна тема</label>
   </div>
 </body>
 </html>
